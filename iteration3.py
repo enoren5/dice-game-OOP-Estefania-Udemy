@@ -28,24 +28,22 @@ class Player:
         return Die.roll
 
 class DiceGame(Die,Player):
-    
+
     def __init__(self,player_type):
         self.human = Player.player_type # True
         self.computer = Player.player_type # False
-        # self.start = True
-        # self.run = True
+
 
     def play(self):
         print("Welcome to the OOP dice game!")
         while self.counter != 0:
             self.start_round()
             continue
-        print("Game Over!")
+        print(f"Game Over! The winner is {self.Player.counter==0}")
 
 
     def start_round(self):
-        
-        print("Let this round begin.")
+        input("Press any key to begin the (next) round.")
 
         dice_roll1 = Player.get_roll
         dice_roll2 = Player.get_roll
@@ -57,10 +55,12 @@ class DiceGame(Die,Player):
             
             if dice_roll1 > dice_roll2:
                 self.human.set_win
+                self.computer.set_lose
                 print(f"Round winner is {self.human}")
                 
             elif dice_roll1 < dice_roll2:
                 self.computer.set_win
+                self.human.set_lose
                 print(f"Round winner is {self.computer}")
             
             elif dice_roll1 == dice_roll2:
